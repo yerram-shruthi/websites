@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love ❤️</title>
+  <style>
+    /* Custom Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@300;400;700&display=swap');
+
+    /* Global Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: #0a043c;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Starry Background */
+    body::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><circle cx="10%" cy="15%" r="1" fill="white"/></svg>');
+      animation: twinkle 3s infinite;
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: #ff6f61;
+      animation: float 6s linear infinite;
+      pointer-events: none;
+    }
+
+    /* Animations */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) translateX(-10vw); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-20vh) translateX(10vw); opacity: 0; }
+    }
+
+    /* Content Container */
+    .container {
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      color: #ff6f61;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+
+    .memory-section {
+      display: none;
+    }
+
+    .active {
+      display: block;
+      animation: fadeIn 1s;
+    }
+
+    .memory-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button {
+      background: #ff6f61;
+      color: white;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ff6f61;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Hearts Container -->
+  <div id="hearts-container"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Page 1 - Proposal Memory -->
+    <div class="memory-section active" id="page1">
+      <h1>To My Forever Love ❤️</h1>
+      <img src="https://banner2.cleanpng.com/20190323/hlh/kisspng-marriage-proposal-cartoon-vector-graphics-image-2-16-1713900215569.webp" class="memory-image" alt="Our Proposal">
+      <p>June 6th - The day you made me the happiest person in the world. Every moment with you feels like a beautiful dream come true.</p>
+      <button onclick="showSection('page2')">Our Journey →</button>
+    </div>
+
+    <!-- Page 2 - School Memory -->
+    <div class="memory-section" id="page2">
+      <h1>Our Sweet Beginning 🏫</h1>
+      <img src="https://wallpapers.com/images/high/high-school-love-story-tba90isokuiuepys.webp" class="memory-image" style="max-width: 150px;" alt="School Days">
+      <p>From classroom glances to lifelong romance - you've been my favorite love story since the day we met.</p>
+      <button onclick="showSection('page3')">Special Message →</button>
+    </div>
+
+    <!-- Page 3 - Birthday Message -->
+   <!-- Page 3 - Birthday Message -->
+<div class="memory-section" id="page3">
+    <h1>Happy Birthday, My Nani! 🎂</h1>
+    <img src="https://png.pngtree.com/png-clipart/20240214/original/pngtree-lover-cartoon-couple-character-happy-anniversary-on-valentines-day-with-strawberry-png-image_14313118.png" class="memory-image" style="max-width: 200px;" alt="Birthday Celebration">
+    <p>My love, today is not just your birthday—it’s the day the universe decided the world needed your light. ✨</p>
+    <p>💖 You are my greatest gift, my sweetest dream, and my forever love.  
+    💫 With you, every moment feels like a fairytale written in the stars.  
+    🌹 If love had a name, it would be yours. If happiness had a face, it would be your smile.</p>
+    <p>“In your arms, I’ve found my home. In your heart, I’ve found my forever.” 💞</p>
+    <p>May your day be filled with as much love and magic as you bring into my life. Happy Birthday, My Special One! 🎁🎊</p>
+    <button onclick="showSection('page1')">Back to Start</button>
+  </div>  
+  </div>
+
+  <script>
+    // Floating Hearts Animation
+    function createHearts() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+        document.getElementById('hearts-container').appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 6000);
+      }, 300);
+    }
+
+    // Show/Hide Sections
+    function showSection(sectionId) {
+      document.querySelectorAll('.memory-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Start animations
+    window.onload = createHearts;
+  </script>
+</body>
+</html>
